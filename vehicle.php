@@ -55,7 +55,7 @@ include'/includes/dashboard_menu.php'
         <th class="data">Maintenance Date</th>
         <th class="data">Maintenance Description</th>
         <th class="data">License Plate</th>
-		<th class="data">Km Count</th>
+    <th class="data">Km Count</th>
         <th class="data">History</th>
 
 
@@ -67,10 +67,8 @@ include'/includes/dashboard_menu.php'
 include 'includes/connect.php';
 $sqls= mysqli_query($dbhandle,"SELECT * FROM vehicle");
 $sqlr= mysqli_num_rows($sqls);
-$sqlf=mysqli_fetch_assoc($sqls);
 
-for($x=0; $x<$sqlr; $x++){
-   ?>
+while($sqlf=mysqli_fetch_assoc($sqls)){   ?>
 
         <td class="data" width="30px"><center><?php echo $sqlf['model']; ?></center></td>
         <td class="data"><center><?php echo $sqlf['make']; ?></center></td>
@@ -80,7 +78,7 @@ for($x=0; $x<$sqlr; $x++){
         <td class="data"><center><?php echo $sqlf['license_plate']; ?></center></td>
         <td class="data"><center><?php echo $sqlf['km_count']; ?></center></td>
         <td class="data"><center><?php echo $sqlf['history']; ?></center></td>
-		
+    
 
         <td class="data" width="75px">
         <center>
@@ -90,11 +88,11 @@ for($x=0; $x<$sqlr; $x++){
 
         </center>
         </td>
-      </tr>
-    </table>
-    <?php }
+      </tr><?php }
 
     ?>
+    </table>
+    
 </div>
 <?php 
 
