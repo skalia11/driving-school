@@ -12,6 +12,7 @@ header('Location:index.php');
 }
 include '/includes/dashboard_header.php' 
 ?>
+?>
   </head>
   <body>
  

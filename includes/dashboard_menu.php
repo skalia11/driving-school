@@ -8,7 +8,7 @@
           <ul class="nav nav-sidebar">
             <li class="active"><a href="dashboard.php">Dashboard</a></li>
             <li><a href="students.php">Students</a></li>
-            <li><a href="#">Vehicles</a></li>
+            <li><a href="vehicle.php">Vehicles</a></li>
             <li><a href="#">Employees</a></li>
             <li><a href="#">Payments</a></li>
           </ul>
