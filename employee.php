@@ -27,6 +27,7 @@ include '/includes/dashboard_header.php'
   </div>
 </div>
 
+
 <div id="wrapper">
   <div id="leftBar">
   <ul>
@@ -37,18 +38,14 @@ include'/includes/dashboard_menu.php'
   </div>
   <div id="rightContent">
   <h3>Employees</h3>
-
   <hr />
-     <div id="smallCenter"><a href="create-instructor.php"><br><h3><div align="center" class="btn">Add a New Instructor</div></h3></a></div>
   
-   
-    <div class="shortcutHome">
-    
-  </div>
-
+  	      <div id="smallCenter"><a href="create-receptionist.php"><br><h3><div align="center" class="btn">Add a New Receptionist</div></h3></a></div>
+ 
   <table class="data">
-      <tr class="data">
-         <th class="data">First Name</th>
+ 
+      <tr class="data"> 
+        <th class="data">First Name</th>
         <th class="data">Last Name</th>
         <th class="data">Gender</th>
         <th class="data">Phone Number</th>
@@ -80,8 +77,8 @@ while($sqlf=mysqli_fetch_assoc($sqls)){   ?>
         </td>
       </tr><?php } ?>
   </table>
-  
-  	      <div id="smallCenter"><a href="create-receptionist.php"><br><h3><div align="center" class="btn">Add a New Receptionist</div></h3></a></div>
+       <div id="smallCenter"><a href="create-instructor.php"><br><h3><div align="center" class="btn">Add a New Instructor</div></h3></a></div>
+
 
    <table class="data">
       <tr class="data">

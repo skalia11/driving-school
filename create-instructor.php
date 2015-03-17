@@ -83,7 +83,7 @@ if(isset($_POST['submit'])){
 
     </table>
  <hr />                         
-  <div align="left"><input class="btn" type="submit" name="submit" value="Save Instructor" /></div>
+  <div align="left"><input class="btn" type="submit" name="submit" value="Save Employee" /></div>
 </form>
 </div>
 <?php 
