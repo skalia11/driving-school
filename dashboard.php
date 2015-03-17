@@ -44,13 +44,13 @@ include'/includes/dashboard_menu.php'
   </div>
   <hr />
     <div class="shortcutHome">
-    <a href=""><img src="css/img/posting.png"><br><b>Create Student</b></a>
+    <a href="create-student.php"><img src="css/img/posting.png"><br><b>Create Student</b></a>
     </div>
     <div class="shortcutHome">
-    <a href=""><img src="css/img/photo.png"><br><b>New Employee</b></a>
+    <a href="create-employee.php"><img src="css/img/photo.png"><br><b>New Employee</b></a>
     </div>
     <div class="shortcutHome">
-    <a href=""><img src="css/img/halaman.png"><br><b>New Vehicle</b></a>
+    <a href="create-vehicle.php"><img src="css/img/halaman.png"><br><b>New Vehicle</b></a>
     </div>
   
     

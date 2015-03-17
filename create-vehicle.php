@@ -70,8 +70,8 @@ if(isset($_POST['submit'])){
       <tr><td width="125px"><b>Vehicle ID</b></td><td><input type="text" autocomplete="off" name="id_veichle" class="pendek" required></td></tr>
       <tr><td width="125px"><b>Model</b></td><td><input type="text" autocomplete="off" name="model" class="pendek" required></td></tr>
       <tr><td width="125px"><b>Make</b></td><td><input type="text" autocomplete="off" name="make" class="pendek" required></td></tr>
-      <tr><td width="125px"><b>Vehicle Year</b></td><td><input type="text" autocomplete="off" name="year" class="pendek" required></td></tr>
-      <tr><td width="125px"><b>Maintenance Date</b></td><td><input type="text" autocomplete="off" name="maintaince_date" class="pendek" required></td></tr>
+	  <tr><td width="125px"><b>Vehicle Year</b></td><td><input type="text" autocomplete="off" name="year" class="pendek" required></td></tr>
+	  <tr><td width="125px"><b>Maintenance Date</b></td><td><input type="date" autocomplete="off" name="maintaince_date" class="pendek" required></td></tr>
 	  <tr><td width="125px"><b>Maintenance Description</b></td><td><input type="text" autocomplete="off" name="maintaince_descripition" class="pendek" required></td></tr>
       <tr><td width="125px"><b>License Plate</b></td><td><input type="text" autocomplete="off" name="license_plate" class="pendek" required></td></tr>
       <tr><td width="125px"><b>Km Count</b></td><td><input type="text" autocomplete="off" name="km_count" class="pendek" required></td></tr>
