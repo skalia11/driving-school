@@ -1,0 +1,110 @@
+<?php
+/********************************************************** 
+ * Project Name: Driving School System
+ * Version: 1.0
+ * Developer: Saransh Kalia & Emad Zamout
+ * Course: CPSC 3660
+ **********************************************************/
+
+ session_start();
+if(!isset($_SESSION['user'])){
+header('Location:index.php');
+}
+include '/includes/dashboard_header.php' 
+?>
+  </head>
+  <body>
+ 
+<div id="header">
+  <div class="inHeader">
+    <div class="mosAdmin">
+    Hello, <?php echo ucfirst($_SESSION['user']);
+
+    ?><br>
+   | <a href="includes/logout.php">Logout</a>
+    </div>
+  <div class="clear"></div>
+  </div>
+</div>
+
+<div id="wrapper">
+  <div id="leftBar">
+  <ul>
+ <?php
+include'/includes/dashboard_menu.php'
+ ?>
+  </ul>
+  </div>
+  <div id="rightContent">
+  <h3>Create a New Students</h3>
+
+  <hr />
+    
+    <div class="shortcutHome">
+    <?php 
+
+if(isset($_POST['submit'])){
+
+  $sin=$_POST['sin'];
+  $fname=$_POST['fname'];
+  $lname=$_POST['lname'];
+  $address=$_POST['street'];
+  $city=$_POST['city'];
+  $postal=$_POST['postal'];
+  $phone=$_POST['phone'];
+  $gender=$_POST['gender'];
+  $dob=$_POST['dob'];
+
+      include 'includes/functions.php';
+      save_student($sin,$fname,$lname,$address,$city,$postal,$phone,$gender,$dob,$dl);
+
+}
+     ?>
+  </div>
+
+    <table width="95%">
+   <form name="newstudent" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+      <tr><td width="125px"><b>First Name</b></td><td><input type="text" autocomplete="off" name="fname" class="pendek" required></td></tr>
+      <tr><td><b>Last Name</b></td><td><input type="text" name="lname" autocomplete="off" class="pendek" required></td></tr>
+            <tr><td><b>Date of Birth</b></td><td><input type="date" autocomplete="off" name="dob" class="pendek" required></td></tr>
+
+      <tr><td><b>Street Address</b></td><td><input type="text" autocomplete="off" name="street" class="panjang" required></td></tr>
+       <tr><td><b>City</b></td><td>
+        <select name="city">
+          <option value="Lethbridge" selected>Lethbridge</option>
+          <option value="Okotoks">Okotoks</option>
+          <option value="Calgary">Calgary</option>
+          <option value="Red Deer">Red Deer</option>
+          <option value="Edmonton">Edmonton</option>
+        </select>
+      </td></tr>
+     <tr><td><b>Postal Code</b></td><td><input name="postal" autocomplete="off" type="text" class="pendek"></td></tr>
+      <tr><td><b>Phone Num</b></td><td><input name="phone" autocomplete="off" type="text" class="pendek" required></td></tr>
+
+      <tr><td><b>Gender</b></td><td>
+          <input type="radio" name="gender"  value="M">Male<br />
+          <input type="radio" name="gender"  value="F">Female
+      </td></tr>
+            <tr><td><b>SIN Card</b></td><td><input name="sin" autocomplete="off" type="text" class="pendek" required></td></tr>
+                        <tr><td><b>Driving License</b></td><td><input name="dl" autocomplete="off" type="text" class="pendek" required></td></tr>
+
+
+                        <tr><td><b></b></td><td>
+
+</td>
+</tr>
+
+    </table>
+ <hr />                         
+  <div align="left"><input class="btn" type="submit" name="submit" value="Save Student" /></div>
+</form>
+</div>
+<?php 
+
+include '/includes/dashboard_footer.php'
+
+?>
+
+
+   
+
