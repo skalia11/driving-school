@@ -55,8 +55,6 @@ include'/includes/dashboard_menu.php'
         <th class="data">address</th>
         <th class="data">Username</th>
         <th class="data">Password</th>
-
-
         <th class="data" width="75px"></th>
       </tr>
       <tr class="data">

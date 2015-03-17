@@ -57,7 +57,7 @@ if(isset($_POST['submit'])){
 
 
       include 'includes/functions.php';
-	  save_receptionist($sincard,$date_birth,$address,$phone_num,$last_name,$first_name,$gender,$username, $password);
+	  save_instructor($sincard,$date_birth,$address,$phone_num,$last_name,$first_name,$gender,$dl_number);
 
 }
      ?>

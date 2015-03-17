@@ -52,12 +52,14 @@ if(isset($_POST['submit'])){
 	$last_name=$_POST['last_name'];
 	$first_name=$_POST['first_name'];
 	$gender=$_POST['gender'];
-	$dl_number=$_POST['dl_number'];
+	$username=$_POST['username'];
+		$password=$_POST['password'];
+
 
 
 
       include 'includes/functions.php';
-	  save_instructor($sincard,$date_birth,$address,$phone_num,$last_name,$first_name,$gender,$dl_number);
+	  save_receptionist($sincard,$date_birth,$address,$phone_num,$last_name,$first_name,$gender,$username, $password);
 
 }
      ?>
