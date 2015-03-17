@@ -36,10 +36,10 @@ include'/includes/dashboard_menu.php'
   </ul>
   </div>
   <div id="rightContent">
-  <h3>Students</h3>
+  <h3>Vehicles</h3>
 
   <hr />
-     <div id="smallCenter"><a href="create-student.php"><br><h3><div align="center" class="btn">Create a New Student</div></h3></a></div>
+     <div id="smallCenter"><a href="create-vehicle.php"><br><h3><div align="center" class="btn">Add a New Vehicle</div></h3></a></div>
   
   
     
@@ -49,44 +49,50 @@ include'/includes/dashboard_menu.php'
 
   <table class="data">
       <tr class="data">
-         <th class="data">Driving License</th>
-        <th class="data">First Name</th>
-        <th class="data">Last name</th>
-        <th class="data">Phone</th>
-        <th class="data">D.O.B</th>
-        <th class="data">Gender</th>
+         <th class="data">Model</th>
+        <th class="data">Make</th>
+        <th class="data">Vehicle Year</th>
+        <th class="data">Maintenance Date</th>
+        <th class="data">Maintenance Description</th>
+        <th class="data">License Plate</th>
+    <th class="data">Km Count</th>
+        <th class="data">History</th>
+
+
+
         <th class="data" width="75px"></th>
       </tr>
       <tr class="data">
           <?php
 include 'includes/connect.php';
-$sqls= mysqli_query($dbhandle,"SELECT * FROM PEOPLE inner join student on student.sincard=people.sincard");
+$sqls= mysqli_query($dbhandle,"SELECT * FROM vehicle");
 $sqlr= mysqli_num_rows($sqls);
-$sqlf=mysqli_fetch_assoc($sqls);
 
 while($sqlf=mysqli_fetch_assoc($sqls)){   ?>
-   
 
-        <td class="data" width="30px"><center><?php echo $sqlf['dl_number']; ?></center></td>
-        <td class="data"><center><?php echo $sqlf['first_name']; ?></center></td>
-        <td class="data"><center><?php echo $sqlf['last_name']; ?></center></td>
-        <td class="data"><center><?php echo $sqlf['phone_num']; ?></center></td>
-        <td class="data"><center><?php echo $sqlf['date_birth']; ?></center></td>
-        <td class="data"><center><?php echo $sqlf['gender']; ?></center></td>
+        <td class="data" width="30px"><center><?php echo $sqlf['model']; ?></center></td>
+        <td class="data"><center><?php echo $sqlf['make']; ?></center></td>
+        <td class="data"><center><?php echo $sqlf['vehicle_year']; ?></center></td>
+        <td class="data"><center><?php echo $sqlf['maintaince_date']; ?></center></td>
+        <td class="data"><center><?php echo $sqlf['maintaince_description']; ?></center></td>
+        <td class="data"><center><?php echo $sqlf['license_plate']; ?></center></td>
+        <td class="data"><center><?php echo $sqlf['km_count']; ?></center></td>
+        <td class="data"><center><?php echo $sqlf['history']; ?></center></td>
+    
 
         <td class="data" width="75px">
         <center>
-        <a href="#"><img src="css/img/detail.png"></a>;
+        <a href="#"><img src="css/img/detail.png"></a>&nbsp;&nbsp;&nbsp;
         <a href="#"><img src="css/img/edit.png"></a>
                 <a href="#"><img src="css/img/delete.png"></a>
 
         </center>
         </td>
-      </tr>
-    </table>
-    <?php }
+      </tr><?php }
 
     ?>
+    </table>
+    
 </div>
 <?php 
 

@@ -19,14 +19,11 @@ function save_people($sincard,$date_birth,$address,$phone_num,$last_name,$first_
 				Error: Sorry, We cant't create a new Person at this moment !
 			</div>
 	<?php
-	}else{  
-			header("Refresh: 3; url=students.php");
-		}
+	}
  }
  
 function save_instructor($sincard,$date_birth,$address,$phone_num,$last_name,$first_name,$gender,$dl_number)
 {
-
 	save_people($sincard,$date_birth,$address,$phone_num,$last_name,$first_name,$gender);
 		include 'includes/connect.php';
 
@@ -42,7 +39,7 @@ function save_instructor($sincard,$date_birth,$address,$phone_num,$last_name,$fi
 		Success: New Instructor information has been created
 	</div>
 		<?php 
-			header("Refresh: 3; url=students.php");
+			header("Refresh: 3; url=instructor.php");
 		}
  }
  
@@ -64,7 +61,7 @@ function save_instructor($sincard,$date_birth,$address,$phone_num,$last_name,$fi
 		Success: New Receptionist information has been created
 	</div>
 		<?php 
-			header("Refresh: 3; url=students.php");
+			header("Refresh: 3; url=receptionist.php");
 		}
  }
  
