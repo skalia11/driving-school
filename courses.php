@@ -43,9 +43,7 @@ include'includes/dashboard_menu.php'
   <div id="rightContent">
   <h3>Courses Management</h3>
 
-  <hr />
-     <div id="smallCenter"><a href="create-student.php"><br><h3><div align="center" class="btn">Create a New Student</div></h3></a></div>
-  
+  <hr />  
   
     
     <div class="shortcutHome">
@@ -56,29 +54,19 @@ include'includes/dashboard_menu.php'
       <tr class="data">
          <th class="data">Course Name</th>
         <th class="data">Hours</th>
-        <th class="data">Course Type</th>
-        <th class="data">Phone</th>
-        <th class="data">D.O.B</th>
-        <th class="data">Gender</th>
-
-
-
-        <th class="data"></th>
-      </tr>
+        <th class="data">Vehicle Type</th>
+        <th class="data">Price</th>      </tr>
       <tr class="data">
 
           <?php
 include 'includes/connect.php';
-$sqls= mysqli_query($dbhandle,"SELECT people.sincard, people.first_name,people.last_name,student.dl_number,people.phone_num,people.date_birth,people.gender FROM PEOPLE  join student on student.sincard=people.sincard");
-$sqlr= mysqli_num_rows($sqls);
+$sqls= mysqli_query($dbhandle,"SELECT course_name,duration,type,price from courses");
 while($sqlf=mysqli_fetch_assoc($sqls)){
    ?>
-        <td class="data" width="30px"><center><?php echo $sqlf['dl_number']; ?></center></td>
-        <td class="data"><center><?php echo $sqlf['first_name']; ?></center></td>
-        <td class="data"><center><?php echo $sqlf['last_name']; ?></center></td>
-        <td class="data"><center><?php echo $sqlf['phone_num']; ?></center></td>
-        <td class="data"><center><?php echo $sqlf['date_birth']; ?></center></td>
-        <td class="data"><center><?php echo $sqlf['gender']; ?></center></td>
+        <td class="data" width="30px"><center><?php echo $sqlf['course_name']; ?></center></td>
+        <td class="data"><center><?php echo $sqlf['hours']; ?></center></td>
+        <td class="data"><center><?php echo $sqlf['type']; ?></center></td>
+        <td class="data"><center><?php echo "$".number_format($sqlf['cost'],2); ?></center></td>
 
         <td class="data">
         <center>
@@ -93,28 +81,64 @@ while($sqlf=mysqli_fetch_assoc($sqls)){
 
     ?>
     </table>
+    <hr />
+<div id="rightContent">
+  <h3>Create a New Course</h3>
+  <h4>Enter the course information below</h4>
+</div>
+<table width="95%">
+           
+            <?php
+            if(isset($_POST['submit'])){
+              $cost=$_POST['cost'];
+              $duration=$_POST['duration'];
+              $type=$_POST['type'];
+              $description=$_POST['description'];
+              $coursename=$POST['coursename'];
 
+            include 'includes/connect.php';
+$sqls= mysqli_query($dbhandle,"INSERT into courses values('','$cost','$duration','$type','$description','$coursename')"); 
+if($sqls){
+?>
+<div class="informasi">
+New course has been added !
+    </div>
+<?php }
+else{?>
+  <div class="gagal">
+Error: Sorry, We can't add a new course at this moment !
+    </div>
+<?php
+}
+}
+?>
+   <form name="newstudent" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+      <tr><td width="125px"><b>Course Name</b></td><td><input type="text" maxlength="15" autocomplete="off" name="cost" class="pendek" required></td></tr>
+            <tr><td width="125px"><b>Course Description</b></td><td><input type="text" maxlength="25" autocomplete="off" name="description" class="pendek" required></td></tr>
+
+      <tr><td><b>Hours</b></td><td><input type="number" name="hours" maxlength="15" autocomplete="off" class="pendek" required></td></tr>
+            <tr><td><b>Vehicle Type</b></td><td>
+                <select name="type">
+          <option value="CAR" selected>Car</option>
+          <option value="TRUCK">Truck</option>
+          <option value="MOTORCYCLE">Motorcycle</option>
+        </select>
+            </td></tr>
+
+            <tr><td><b>Price</b></td><td><input type="text" autocomplete="off" name="coursename" class="pendek" required></td></tr>
+       
+
+                        <tr><td><b></b></td><td>
+
+</td>
+</tr>
+
+    </table>
+ <hr />                         
+  <div align="left"><input class="btn" type="submit" name="submit" value="Save Course" /></div>
+</form>
 </div>
 
-<script>
-$(function(){
-
-    $('button#demo').nicemodal({
-        width: '500px',
-        keyCodeToClose: 27,
-        defaultCloseButton: true,
-        idToClose: '#close-nicemodal',
-        closeOnClickOverlay: true,
-        closeOnDblClickOverlay: false,
-        // onOpenModal: function(){
-        //     alert('Opened');
-        // },
-        // onCloseModal: function(){
-        //     alert('Closed');
-        // }
-    });
-});
-</script>
 
 <?php 
 

@@ -10,8 +10,13 @@
 if(!isset($_SESSION['user'])){
 header('Location:index.php');
 }
-include '/includes/dashboard_header.php' 
+include 'includes/dashboard_header.php' 
 ?>
+<link rel="stylesheet" href="css/jquery-nicemodal.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/jquery-nicemodal.js"></script>
+
+
   </head>
   <body>
  
@@ -31,75 +36,81 @@ include '/includes/dashboard_header.php'
   <div id="leftBar">
   <ul>
  <?php
-include'/includes/dashboard_menu.php'
+include'includes/dashboard_menu.php'
  ?>
   </ul>
   </div>
   <div id="rightContent">
-  <h3>Vehicles</h3>
+  <h3>Students</h3>
 
   <hr />
-     <div id="smallCenter"><a href="create-vehicle.php"><br><h3><div align="center" class="btn">Add a New Vehicle</div></h3></a></div>
-  
-  
     
-    <div class="shortcutHome">
-    
-  </div>
+    <div class="shortcutHome"> </div>
 
   <table class="data">
       <tr class="data">
-         <th class="data">Model</th>
-        <th class="data">Make</th>
-        <th class="data">Vehicle Year</th>
-        <th class="data">Maintenance Date</th>
-        <th class="data">Maintenance Description</th>
-        <th class="data">License Plate</th>
-    <th class="data">Km Count</th>
-        <th class="data">History</th>
+         <th class="data">Driving License</th>
+        <th class="data">First Name</th>
+        <th class="data">Last name</th>
+        <th class="data">D.O.B</th>
+        <th class="data">Gender</th>
+        <th class="data">Balance</th>
 
 
-
-        <th class="data" width="75px"></th>
+        <th class="data"></th>
       </tr>
       <tr class="data">
+
           <?php
 include 'includes/connect.php';
-$sqls= mysqli_query($dbhandle,"SELECT * FROM vehicle");
+$sqls= mysqli_query($dbhandle,"SELECT * FROM PEOPLE  join student on student.sincard=people.sincard");
+
 $sqlr= mysqli_num_rows($sqls);
+while($sqlf=mysqli_fetch_assoc($sqls)){
+   ?>
+        <td class="data" width="30px"><center><?php echo $sqlf['dl_number']; ?></center></td>
+        <td class="data"><center><?php echo ucfirst($sqlf['first_name']); ?></center></td>
+        <td class="data"><center><?php echo ucfirst($sqlf['last_name']); ?></center></td>
+        <td class="data"><center><?php echo $sqlf['date_birth']; ?></center></td>
+        <td class="data"><center><?php echo $sqlf['gender']; ?></center></td>
+		        <td class="data"><center><?php echo "$". number_format($sqlf['balance'], 2); ?></center></td>
 
-while($sqlf=mysqli_fetch_assoc($sqls)){   ?>
 
-        <td class="data" width="30px"><center><?php echo $sqlf['model']; ?></center></td>
-        <td class="data"><center><?php echo $sqlf['make']; ?></center></td>
-        <td class="data"><center><?php echo $sqlf['vehicle_year']; ?></center></td>
-        <td class="data"><center><?php echo $sqlf['maintaince_date']; ?></center></td>
-        <td class="data"><center><?php echo $sqlf['maintaince_description']; ?></center></td>
-        <td class="data"><center><?php echo $sqlf['license_plate']; ?></center></td>
-        <td class="data"><center><?php echo $sqlf['km_count']; ?></center></td>
-        <td class="data"><center><?php echo $sqlf['history']; ?></center></td>
-    
-
-        <td class="data" width="75px">
+        <td class="data">
         <center>
-        <a href="#"><img src="css/img/detail.png"></a>&nbsp;&nbsp;&nbsp;
-        <a href="#"><img src="css/img/edit.png"></a>
-                <a href="#"><img src="css/img/delete.png"></a>
+         <?php  $sqlres=$sqlf['sincard']; ?>
+        <button> <a href="edit-payments.php?sincard=<?php echo $sqlres;?>"><img src="css/img/edit.png"></a></button>
 
         </center>
         </td>
       </tr><?php }
-
     ?>
     </table>
-    
+
 </div>
+
+<script>
+$(function(){
+
+    $('button#demo').nicemodal({
+        width: '500px',
+        keyCodeToClose: 27,
+        defaultCloseButton: true,
+        idToClose: '#close-nicemodal',
+        closeOnClickOverlay: true,
+        closeOnDblClickOverlay: false,
+        // onOpenModal: function(){
+        //     alert('Opened');
+        // },
+        // onCloseModal: function(){
+        //     alert('Closed');
+        // }
+    });
+});
+</script>
+
 <?php 
 
-include '/includes/dashboard_footer.php'
+include 'includes/dashboard_footer.php'
 
 ?>
-
-
-   
-

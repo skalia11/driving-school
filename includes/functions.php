@@ -1,4 +1,26 @@
+
 <?php
+function update_payment($sin, $payment, $balance)
+{
+	include 'includes/connect.php';
+	$balance = $balance - $payment;
+	$sc = mysqli_query($dbhandle, "UPDATE student SET balance='$balance' WHERE sincard='$sin'");
+	
+	if((!$sc)){?>
+			<div class="gagal">
+Error: Sorry, We cant't take payment at this moment !
+		</div>
+<?php
+
+ }else{ ?>
+<div class="informasi">
+Payment accepted!
+		</div>
+<?php 
+header("Refresh: 3; url=payments.php");
+
+}
+}
 
 function save_student($sin,$fname,$lname,$address,$city,$postal,$phone,$gender,$dob,$dl){
 

@@ -12,10 +12,10 @@
                         <li><a href="people.php">People</a></li>
 
             <li><a href="students.php">Students</a></li>
-            <li><a href="#">Vehicles</a></li>
-            <li><a href="#">Employees</a></li>
+            <li><a href="vehicle.php">Vehicles</a></li>
+            <li><a href="employee.php#">Employees</a></li>
             <li><a href="courses.php">Courses</a></li>
-            <li><a href="#">Payments</a></li>
+            <li><a href="payments.php">Payments</a></li>
           </ul>
           
         </div>
