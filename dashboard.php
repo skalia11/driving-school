@@ -10,8 +10,7 @@
 if(!isset($_SESSION['user'])){
 header('Location:index.php');
 }
-include '/includes/dashboard_header.php' 
-?>
+include 'includes/dashboard_header.php' 
 ?>
   </head>
   <body>
@@ -32,7 +31,7 @@ include '/includes/dashboard_header.php'
   <div id="leftBar">
   <ul>
  <?php
-include'/includes/dashboard_menu.php'
+include'includes/dashboard_menu.php'
  ?>
   </ul>
   </div>
@@ -47,26 +46,40 @@ include'/includes/dashboard_menu.php'
     <a href="create-student.php"><img src="css/img/posting.png"><br><b>Create Student</b></a>
     </div>
     <div class="shortcutHome">
-    <a href="create-employee.php"><img src="css/img/photo.png"><br><b>New Employee</b></a>
+    <a href=""><img src="css/img/photo.png"><br><b>New Employee</b></a>
     </div>
     <div class="shortcutHome">
-    <a href="create-vehicle.php"><img src="css/img/halaman.png"><br><b>New Vehicle</b></a>
+    <a href=""><img src="css/img/halaman.png"><br><b>New Vehicle</b></a>
     </div>
   
     
     <div class="shortcutHome">
     <div id="smallRight"><h3>Summary</h3>
     <table style="border: none;font-size: 12px;color: #5b5b5b;width: 100%;margin: 10px 0 10px 0;">
-      <tr><td style="border: none;padding: 4px;">Total Number of Students</td><td style="border: none;padding: 4px;"><b>12</b></td></tr>
-      <tr><td style="border: none;padding: 4px;">Total Number of Users</td><td style="border: none;padding: 4px;"><b>12</b></td></tr>
-      <tr><td style="border: none;padding: 4px;">Number of vehicles</td><td style="border: none;padding: 4px;"><b>12</b></td></tr>
+      <tr><td style="border: none;padding: 4px;">Total Number of Students</td><td style="border: none;padding: 4px;"><b>
+        <?php
+require_once('includes/connect.php');
+  $sql_get_num_s = mysqli_query($dbhandle,"select COUNT(*) AS cs from student");
+  $sql_get_num_r_s=mysqli_fetch_assoc($sql_get_num_s);   
+echo $sql_get_num_r_s['cs'];
+      ?></b></td></tr>
+      <tr><td style="border: none;padding: 4px;">Total Number of People</td><td style="border: none;padding: 4px;"><b>
+
+
+    <?php
+require_once('includes/connect.php');
+  $sql_get_num_p = mysqli_query($dbhandle,"select count(*) cp from people");
+  $sql_get_num_r_p=mysqli_fetch_assoc($sql_get_num_p);   
+echo $sql_get_num_r_p['cp'];
+      ?></b></td></tr>
+      <tr><td style="border: none;padding: 4px;">Number of Vehicles</td><td style="border: none;padding: 4px;"><b>12</b></td></tr>
     </table>
     </div>
   </div>
 </div>
 <?php 
 
-include '/includes/dashboard_footer.php'
+include 'includes/dashboard_footer.php'
 
 ?>
 

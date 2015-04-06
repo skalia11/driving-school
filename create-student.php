@@ -10,7 +10,7 @@
 if(!isset($_SESSION['user'])){
 header('Location:index.php');
 }
-include '/includes/dashboard_header.php' 
+include 'includes/dashboard_header.php' 
 ?>
   </head>
   <body>
@@ -31,7 +31,7 @@ include '/includes/dashboard_header.php'
   <div id="leftBar">
   <ul>
  <?php
-include'/includes/dashboard_menu.php'
+include'includes/dashboard_menu.php'
  ?>
   </ul>
   </div>
@@ -54,6 +54,8 @@ if(isset($_POST['submit'])){
   $phone=$_POST['phone'];
   $gender=$_POST['gender'];
   $dob=$_POST['dob'];
+  $dl=$_POST['dl'];
+
 
       include 'includes/functions.php';
       save_student($sin,$fname,$lname,$address,$city,$postal,$phone,$gender,$dob,$dl);
@@ -64,29 +66,29 @@ if(isset($_POST['submit'])){
 
     <table width="95%">
    <form name="newstudent" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-      <tr><td width="125px"><b>First Name</b></td><td><input type="text" autocomplete="off" name="fname" class="pendek" required></td></tr>
-      <tr><td><b>Last Name</b></td><td><input type="text" name="lname" autocomplete="off" class="pendek" required></td></tr>
+      <tr><td width="125px"><b>First Name</b></td><td><input type="text" maxlength="15" autocomplete="off" name="fname" class="pendek" required></td></tr>
+      <tr><td><b>Last Name</b></td><td><input type="text" name="lname" maxlength="15" autocomplete="off" class="pendek" required></td></tr>
             <tr><td><b>Date of Birth</b></td><td><input type="date" autocomplete="off" name="dob" class="pendek" required></td></tr>
 
-      <tr><td><b>Street Address</b></td><td><input type="text" autocomplete="off" name="street" class="panjang" required></td></tr>
+      <tr><td><b>Street Address</b></td><td><input type="text" maxlength="25" size="25" autocomplete="off" name="street" class="panjang" required></td></tr>
        <tr><td><b>City</b></td><td>
         <select name="city">
-          <option value="Lethbridge" selected>Lethbridge</option>
-          <option value="Okotoks">Okotoks</option>
-          <option value="Calgary">Calgary</option>
-          <option value="Red Deer">Red Deer</option>
-          <option value="Edmonton">Edmonton</option>
+          <option value="LB" selected>Lethbridge</option>
+          <option value="OK">Okotoks</option>
+          <option value="CG">Calgary</option>
+          <option value="RD">Red Deer</option>
+          <option value="ED">Edmonton</option>
         </select>
       </td></tr>
-     <tr><td><b>Postal Code</b></td><td><input name="postal" autocomplete="off" type="text" class="pendek"></td></tr>
-      <tr><td><b>Phone Num</b></td><td><input name="phone" autocomplete="off" type="text" class="pendek" required></td></tr>
+     <tr><td><b>Postal Code</b></td><td><input name="postal" maxlength="6" autocomplete="off" type="text" class="pendek"></td></tr>
+      <tr><td><b>Phone Num</b></td><td><input name="phone" maxlength="12" autocomplete="off" type="text" class="pendek" required></td></tr>
 
       <tr><td><b>Gender</b></td><td>
           <input type="radio" name="gender"  value="M">Male<br />
           <input type="radio" name="gender"  value="F">Female
       </td></tr>
-            <tr><td><b>SIN Card</b></td><td><input name="sin" autocomplete="off" type="text" class="pendek" required></td></tr>
-                        <tr><td><b>Driving License</b></td><td><input name="dl" autocomplete="off" type="text" class="pendek" required></td></tr>
+            <tr><td><b>SIN Card</b></td><td><input name="sin" maxlength="9" autocomplete="off" type="text" class="pendek" required></td></tr>
+                        <tr><td><b>Driving License</b></td><td><input name="dl" maxlength="10" autocomplete="off" type="text" class="pendek" required></td></tr>
 
 
                         <tr><td><b></b></td><td>
@@ -101,7 +103,7 @@ if(isset($_POST['submit'])){
 </div>
 <?php 
 
-include '/includes/dashboard_footer.php'
+include 'includes/dashboard_footer.php'
 
 ?>
 

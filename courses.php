@@ -41,7 +41,7 @@ include'includes/dashboard_menu.php'
   </ul>
   </div>
   <div id="rightContent">
-  <h3>Students</h3>
+  <h3>Courses Management</h3>
 
   <hr />
      <div id="smallCenter"><a href="create-student.php"><br><h3><div align="center" class="btn">Create a New Student</div></h3></a></div>
@@ -54,12 +54,13 @@ include'includes/dashboard_menu.php'
 
   <table class="data">
       <tr class="data">
-         <th class="data">Driving License</th>
-        <th class="data">First Name</th>
-        <th class="data">Last name</th>
+         <th class="data">Course Name</th>
+        <th class="data">Hours</th>
+        <th class="data">Course Type</th>
         <th class="data">Phone</th>
         <th class="data">D.O.B</th>
         <th class="data">Gender</th>
+
 
 
         <th class="data"></th>
@@ -73,8 +74,8 @@ $sqlr= mysqli_num_rows($sqls);
 while($sqlf=mysqli_fetch_assoc($sqls)){
    ?>
         <td class="data" width="30px"><center><?php echo $sqlf['dl_number']; ?></center></td>
-        <td class="data"><center><?php echo ucfirst($sqlf['first_name']); ?></center></td>
-        <td class="data"><center><?php echo ucfirst($sqlf['last_name']); ?></center></td>
+        <td class="data"><center><?php echo $sqlf['first_name']; ?></center></td>
+        <td class="data"><center><?php echo $sqlf['last_name']; ?></center></td>
         <td class="data"><center><?php echo $sqlf['phone_num']; ?></center></td>
         <td class="data"><center><?php echo $sqlf['date_birth']; ?></center></td>
         <td class="data"><center><?php echo $sqlf['gender']; ?></center></td>
@@ -82,9 +83,9 @@ while($sqlf=mysqli_fetch_assoc($sqls)){
         <td class="data">
         <center>
          <?php  $sqlres=$sqlf['sincard']; ?>
-        <button name="views" formmethod="post" data-url="view-student.php?sincard=<?php echo $sqlres;?>" id="demo"><img src="css/img/detail.png"></button>
-        <button> <a href="edit-student.php?sincard=<?php echo $sqlres;?>"><img src="css/img/edit.png"></a></button>
-              <button name="delete" id="demo" formmethod="post" data-url="delete-student.php?sincard=<?php echo $sqlres;?>">  <img src="css/img/delete.png"></button>
+        <button formmethod="post" data-url="view-student.php?sincard=<?php echo $sqlres;?>" id="demo"><img src="css/img/detail.png"></button>
+        <button data-url="" id="demo"><img src="css/img/edit.png"></button>
+              <button data-url="" id="demo">  <img src="css/img/delete.png"></button>
 
         </center>
         </td>

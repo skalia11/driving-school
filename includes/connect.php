@@ -6,7 +6,7 @@
  * Course: CPSC 3660
  **********************************************************/
  
-	$dbhandle = mysqli_connect("localhost", "root", "123456","driving_school");
+	$dbhandle = mysqli_connect("localhost", "root", "root","driving_school");
 if(!$dbhandle){
 	echo "I am not able to connect";
 }

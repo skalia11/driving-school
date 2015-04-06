@@ -10,7 +10,8 @@
 if(!isset($_SESSION['user'])){
 header('Location:index.php');
 }
-include 'includes/dashboard_header.php' 
+include 'includes/dashboard_header.php' ;
+include 'includes/functions.php';
 ?>
 <link rel="stylesheet" href="css/jquery-nicemodal.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -41,10 +42,9 @@ include'includes/dashboard_menu.php'
   </ul>
   </div>
   <div id="rightContent">
-  <h3>Students</h3>
+  <h3>List of all the People</h3>
 
   <hr />
-     <div id="smallCenter"><a href="create-student.php"><br><h3><div align="center" class="btn">Create a New Student</div></h3></a></div>
   
   
     
@@ -54,40 +54,46 @@ include'includes/dashboard_menu.php'
 
   <table class="data">
       <tr class="data">
-         <th class="data">Driving License</th>
         <th class="data">First Name</th>
         <th class="data">Last name</th>
         <th class="data">Phone</th>
         <th class="data">D.O.B</th>
         <th class="data">Gender</th>
+        <th class="data">Address</th>
+        <th class="data">City</th>
+        <th class="data">User Roles</th>
 
 
-        <th class="data"></th>
+
       </tr>
       <tr class="data">
 
           <?php
 include 'includes/connect.php';
-$sqls= mysqli_query($dbhandle,"SELECT people.sincard, people.first_name,people.last_name,student.dl_number,people.phone_num,people.date_birth,people.gender FROM PEOPLE  join student on student.sincard=people.sincard");
+$sqls= mysqli_query($dbhandle,"SELECT people.sincard, people.address,people.city,people.postal, people.first_name,people.last_name,people.phone_num,people.date_birth,people.gender FROM PEOPLE");
 $sqlr= mysqli_num_rows($sqls);
+
 while($sqlf=mysqli_fetch_assoc($sqls)){
    ?>
-        <td class="data" width="30px"><center><?php echo $sqlf['dl_number']; ?></center></td>
+   <?php
+ 
+?>
         <td class="data"><center><?php echo ucfirst($sqlf['first_name']); ?></center></td>
         <td class="data"><center><?php echo ucfirst($sqlf['last_name']); ?></center></td>
         <td class="data"><center><?php echo $sqlf['phone_num']; ?></center></td>
         <td class="data"><center><?php echo $sqlf['date_birth']; ?></center></td>
         <td class="data"><center><?php echo $sqlf['gender']; ?></center></td>
+        <td class="data"><center><?php echo strtoupper($sqlf['address']); ?></center></td>
+        <td class="data"><center><?php if($sqlf['city']=='CG'){ echo "Calgary"; }elseif($sqlf['city']=='LB'){ echo "Lethbridge";}elseif($sqlf['city']=='OK'){ echo "Okotoks";} else{
+          echo "Red Deer";}?></center><center>
+                  <td class="data"><center><?php who_is($sqlf['sincard']); ?></center></td>
 
-        <td class="data">
-        <center>
-         <?php  $sqlres=$sqlf['sincard']; ?>
-        <button name="views" formmethod="post" data-url="view-student.php?sincard=<?php echo $sqlres;?>" id="demo"><img src="css/img/detail.png"></button>
-        <button> <a href="edit-student.php?sincard=<?php echo $sqlres;?>"><img src="css/img/edit.png"></a></button>
-              <button name="delete" id="demo" formmethod="post" data-url="delete-student.php?sincard=<?php echo $sqlres;?>">  <img src="css/img/delete.png"></button>
 
-        </center>
-        </td>
+
+         
+
+
+        
       </tr><?php }
 
     ?>
