@@ -84,7 +84,7 @@ while($sqlf=mysqli_fetch_assoc($sqls)){
          <?php  $sqlres=$sqlf['sincard']; ?>
         <button name="views" formmethod="post" data-url="view-student.php?sincard=<?php echo $sqlres;?>" id="demo"><img src="css/img/detail.png"></button>
         <button> <a href="edit-student.php?sincard=<?php echo $sqlres;?>"><img src="css/img/edit.png"></a></button>
-              <button name="delete" id="demo" formmethod="post" data-url="delete-student.php?sincard=<?php echo $sqlres;?>">  <img src="css/img/delete.png"></button>
+              <button name="delete" id="demo" formmethod="post" data-url="d.php?sincard=<?php echo $sqlres;?>">  <img src="css/img/delete.png"></button>
 
         </center>
         </td>
@@ -105,12 +105,13 @@ $(function(){
         idToClose: '#close-nicemodal',
         closeOnClickOverlay: true,
         closeOnDblClickOverlay: false,
-        // onOpenModal: function(){
-        //     alert('Opened');
-        // },
-        // onCloseModal: function(){
-        //     alert('Closed');
-        // }
+          //onCloseModal: function(){
+       // alert('Reload Page to see the effect !');
+         //   window.location.href='student.php';
+
+         //}
+        
+
     });
 });
 </script>

@@ -41,7 +41,7 @@ include'includes/dashboard_menu.php'
   </ul>
   </div>
   <div id="rightContent">
-  <h3>Students</h3>
+  <h3>Student Payments</h3>
 
   <hr />
     
@@ -52,8 +52,6 @@ include'includes/dashboard_menu.php'
          <th class="data">Driving License</th>
         <th class="data">First Name</th>
         <th class="data">Last name</th>
-        <th class="data">D.O.B</th>
-        <th class="data">Gender</th>
         <th class="data">Balance</th>
 
 
@@ -71,15 +69,13 @@ while($sqlf=mysqli_fetch_assoc($sqls)){
         <td class="data" width="30px"><center><?php echo $sqlf['dl_number']; ?></center></td>
         <td class="data"><center><?php echo ucfirst($sqlf['first_name']); ?></center></td>
         <td class="data"><center><?php echo ucfirst($sqlf['last_name']); ?></center></td>
-        <td class="data"><center><?php echo $sqlf['date_birth']; ?></center></td>
-        <td class="data"><center><?php echo $sqlf['gender']; ?></center></td>
 		        <td class="data"><center><?php echo "$". number_format($sqlf['balance'], 2); ?></center></td>
 
 
         <td class="data">
         <center>
          <?php  $sqlres=$sqlf['sincard']; ?>
-        <button> <a href="edit-payments.php?sincard=<?php echo $sqlres;?>"><img src="css/img/edit.png"></a></button>
+        <button> <a href="edit-payments.php?sincard=<?php echo $sqlres;?>">Add Payment</a></button>
 
         </center>
         </td>

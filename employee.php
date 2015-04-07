@@ -10,7 +10,7 @@
 if(!isset($_SESSION['user'])){
 header('Location:index.php');
 }
-include '/includes/dashboard_header.php' 
+include 'includes/dashboard_header.php' 
 ?>
   </head>
   <body>
@@ -32,7 +32,7 @@ include '/includes/dashboard_header.php'
   <div id="leftBar">
   <ul>
  <?php
-include'/includes/dashboard_menu.php'
+include'includes/dashboard_menu.php'
  ?>
   </ul>
   </div>
@@ -119,7 +119,7 @@ while($sqlf=mysqli_fetch_assoc($sqls)){   ?>
 </div>
 <?php 
 
-include '/includes/dashboard_footer.php'
+include 'includes/dashboard_footer.php'
 
 ?>
 

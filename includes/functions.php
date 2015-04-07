@@ -1,4 +1,3 @@
-
 <?php
 function update_payment($sin, $payment, $balance)
 {
@@ -8,27 +7,31 @@ function update_payment($sin, $payment, $balance)
 	
 	if((!$sc)){?>
 			<div class="gagal">
-Error: Sorry, We cant't take payment at this moment !
+Error: Sorry, We cant't record the payment at this moment !
 		</div>
 <?php
 
  }else{ ?>
 <div class="informasi">
-Payment accepted!
+Student payment information has been recorded !
+
 		</div>
 <?php 
-header("Refresh: 3; url=payments.php");
+header("Refresh: 2; url=payments.php");
 
 }
 }
-
-function save_student($sin,$fname,$lname,$address,$city,$postal,$phone,$gender,$dob,$dl){
+function save_student($sin,$fname,$lname,$address,$city,$postal,$phone,$gender,$dob,$dl,$package){
 
 include 'includes/connect.php';
 
+$fc=mysqli_query($dbhandle,"select cost from courses where id_course='$package'");
+$cf=mysqli_fetch_assoc($fc);
+$pc=$cf['cost'];
 $sc=mysqli_query($dbhandle,"INSERT INTO people (sincard, date_birth, address, city, postal, phone_num, last_name, first_name, gender) VALUES('$sin','$dob','$address','$city','$postal','$phone','$lname','$fname','$gender')");
 
-$si=mysqli_query($dbhandle,"INSERT INTO student VALUES('$sin','$dl','0.00')");
+$si=mysqli_query($dbhandle,"INSERT INTO student VALUES('$sin','$dl','$pc')");
+
 
 if((!$sc) || (!$si)){?>
 			<div class="gagal">
@@ -71,6 +74,8 @@ header("Refresh: 3; url=students.php");
 
 }
  }
+
+
 function who_is($sin){
 
 include 'includes/connect.php';
@@ -82,30 +87,6 @@ if($sc_get['sincard']==$sin){
 		echo "<font color='Green'>Instructor</font>";
 }else{
 			echo "<font color='Orange'>Admin</font>";
-
-}
- }
-
-function delete_student($sin){
-
-include 'includes/connect.php';
-
-
-$sdl=mysqli_query($dbhandle,"DELETE from people where sincard='$sin'");
-
-if(!$sdl){?>
-			<div class="gagal">
-
-Error: Sorry, We can't delete the record !
-		</div>
-<?php
-
- }else{ ?>
-<div class="informasi">
-Student information has been deleted !
-		</div>
-<?php 
-header("Refresh: 3; url=students.php");
 
 }
  }
