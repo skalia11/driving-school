@@ -44,22 +44,19 @@ $sin = (isset($_GET['sincard']) ? $_GET['sincard'] : null);
 <script>
 $(function(){
 
-   $('button#demo').nicemodal({
+    $('button#demo').nicemodal({
         width: '500px',
         keyCodeToClose: 27,
         defaultCloseButton: true,
         idToClose: '#close-nicemodal',
         closeOnClickOverlay: true,
-        closeOnDblClickOverlay: false,
-        onOpenModal: function(){
-        confirm('You really want to delete it ?');
-        },
-          onCloseModal: function(){
-            window.location.href='students.php';
-
-         }
-        
-
+        closeOnDblClickOverlay: true,
+        // onOpenModal: function(){
+        //     alert('Opened');
+        // },
+        // onCloseModal: function(){
+        //     alert('Closed');
+        // }
     });
 });
 </script>

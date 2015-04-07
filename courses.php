@@ -53,28 +53,27 @@ include'includes/dashboard_menu.php'
   <table class="data">
       <tr class="data">
          <th class="data">Course Name</th>
-        <th class="data">Duration</th>
+        <th class="data">Hours</th>
         <th class="data">Vehicle Type</th>
-        <th class="data">Price</th>      
-<th class="data"></th> 
-      </tr>
+        <th class="data">Price</th>      </tr>
       <tr class="data">
 
           <?php
 include 'includes/connect.php';
-$sqls= mysqli_query($dbhandle,"SELECT id_course,course_name,duration,cost,type from courses");
+$sqls= mysqli_query($dbhandle,"SELECT course_name,duration,type,price from courses");
 while($sqlf=mysqli_fetch_assoc($sqls)){
    ?>
         <td class="data" width="30px"><center><?php echo $sqlf['course_name']; ?></center></td>
-        <td class="data"><center><?php echo $sqlf['duration']." hours"; ?></center></td>
+        <td class="data"><center><?php echo $sqlf['hours']; ?></center></td>
         <td class="data"><center><?php echo $sqlf['type']; ?></center></td>
         <td class="data"><center><?php echo "$".number_format($sqlf['cost'],2); ?></center></td>
 
         <td class="data">
         <center>
-         <?php  $sqlres=$sqlf['id_course']; ?>
-        <button formmethod="post" data-url="view-student.php?sincard=<?php echo $sqlres;?>" id="demo"><img src="css/img/edit.png"></button>
-              <button formmethod="post" data-url="view-student.php?sincard=<?php echo $sqlres;?>" id="demo">  <img src="css/img/delete.png"></button>
+         <?php  $sqlres=$sqlf['sincard']; ?>
+        <button formmethod="post" data-url="view-student.php?sincard=<?php echo $sqlres;?>" id="demo"><img src="css/img/detail.png"></button>
+        <button data-url="" id="demo"><img src="css/img/edit.png"></button>
+              <button data-url="" id="demo">  <img src="css/img/delete.png"></button>
 
         </center>
         </td>
@@ -95,7 +94,7 @@ while($sqlf=mysqli_fetch_assoc($sqls)){
               $duration=$_POST['duration'];
               $type=$_POST['type'];
               $description=$_POST['description'];
-              $coursename=$_POST['coursename'];
+              $coursename=$POST['coursename'];
 
             include 'includes/connect.php';
 $sqls= mysqli_query($dbhandle,"INSERT into courses values('','$cost','$duration','$type','$description','$coursename')"); 
@@ -104,10 +103,7 @@ if($sqls){
 <div class="informasi">
 New course has been added !
     </div>
-<?php 
-header("Refresh: 1; url=courses.php");
-
-}
+<?php }
 else{?>
   <div class="gagal">
 Error: Sorry, We can't add a new course at this moment !
@@ -117,10 +113,10 @@ Error: Sorry, We can't add a new course at this moment !
 }
 ?>
    <form name="newstudent" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-      <tr><td width="125px"><b>Course Name</b></td><td><input type="text" maxlength="15" autocomplete="off" name="coursename" class="pendek" required></td></tr>
+      <tr><td width="125px"><b>Course Name</b></td><td><input type="text" maxlength="15" autocomplete="off" name="cost" class="pendek" required></td></tr>
             <tr><td width="125px"><b>Course Description</b></td><td><input type="text" maxlength="25" autocomplete="off" name="description" class="pendek" required></td></tr>
 
-      <tr><td><b>Hours</b></td><td><input type="number" name="duration" maxlength="15" autocomplete="off" class="pendek" required></td></tr>
+      <tr><td><b>Hours</b></td><td><input type="number" name="hours" maxlength="15" autocomplete="off" class="pendek" required></td></tr>
             <tr><td><b>Vehicle Type</b></td><td>
                 <select name="type">
           <option value="CAR" selected>Car</option>
@@ -129,7 +125,7 @@ Error: Sorry, We can't add a new course at this moment !
         </select>
             </td></tr>
 
-            <tr><td><b>Price</b></td><td><input type="text" autocomplete="off" name="cost" class="pendek" required></td></tr>
+            <tr><td><b>Price</b></td><td><input type="text" autocomplete="off" name="coursename" class="pendek" required></td></tr>
        
 
                         <tr><td><b></b></td><td>

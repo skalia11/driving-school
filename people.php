@@ -1,11 +1,10 @@
-<?php
-/********************************************************** 
+<!--*****************************************************
  * Project Name: Driving School System
  * Version: 1.0
  * Developer: Saransh Kalia & Emad Zamout
  * Course: CPSC 3660
- **********************************************************/
-
+ *****************************************************-->
+<?php
  session_start();
 if(!isset($_SESSION['user'])){
 header('Location:index.php');

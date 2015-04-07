@@ -46,10 +46,10 @@ include'includes/dashboard_menu.php'
     <a href="create-student.php"><img src="css/img/posting.png"><br><b>Create Student</b></a>
     </div>
     <div class="shortcutHome">
-    <a href="employee.php"><img src="css/img/photo.png"><br><b>Employee</b></a>
+    <a href=""><img src="css/img/photo.png"><br><b>New Employee</b></a>
     </div>
     <div class="shortcutHome">
-    <a href="create-vehicle.php"><img src="css/img/halaman.png"><br><b>Vehicle</b></a>
+    <a href=""><img src="css/img/halaman.png"><br><b>New Vehicle</b></a>
     </div>
   
     

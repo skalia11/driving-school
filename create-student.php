@@ -18,9 +18,7 @@ include 'includes/dashboard_header.php'
 <div id="header">
   <div class="inHeader">
     <div class="mosAdmin">
-    Hello, <?php echo ucfirst($_SESSION['user']);
-
-    ?><br>
+    Hello, <?php echo ucfirst($_SESSION['user']);?><br>
    | <a href="includes/logout.php">Logout</a>
     </div>
   <div class="clear"></div>
@@ -55,10 +53,10 @@ if(isset($_POST['submit'])){
   $gender=$_POST['gender'];
   $dob=$_POST['dob'];
   $dl=$_POST['dl'];
-$package=$_POST['package'];
+
 
       include 'includes/functions.php';
-      save_student($sin,$fname,$lname,$address,$city,$postal,$phone,$gender,$dob,$dl,$package);
+      save_student($sin,$fname,$lname,$address,$city,$postal,$phone,$gender,$dob,$dl);
 
 }
      ?>
@@ -90,18 +88,7 @@ $package=$_POST['package'];
             <tr><td><b>SIN Card</b></td><td><input name="sin" maxlength="9" autocomplete="off" type="text" class="pendek" required></td></tr>
                         <tr><td><b>Driving License</b></td><td><input name="dl" maxlength="10" autocomplete="off" type="text" class="pendek" required></td></tr>
 
-      <tr><td><b>Choose Package</b></td><td>
-        <?php 
-        include 'includes/connect.php';
-        $cquery=mysqli_query($dbhandle,"select id_course,course_name from courses");
-         ?>
-        <select name="package">
-          <?php 
-          while($sqlcq=mysqli_fetch_assoc($cquery)){ ?>
- <option value="<?php echo $sqlcq['id_course']; ?>" selected><?php echo $sqlcq['course_name']; ?></option>
- <?php } ?>
-        </select>
-      </td></tr>
+
                         <tr><td><b></b></td><td>
 
 </td>
