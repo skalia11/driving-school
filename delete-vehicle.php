@@ -29,15 +29,15 @@ variables that are needed to delete an existing attribute
 in the student query*/
 
 	
-$sin = (isset($_GET['sincard']) ? $_GET['sincard'] : null);
-	if(isset($_GET['sincard'])){
+$vid = (isset($_GET['vid']) ? $_GET['vid'] : null);
+	if(isset($_GET['vid'])){
 
 		include 'includes/connect.php';
-		$sqlget= mysqli_query($dbhandle,"DELETE from people where people.sincard='$sin'");
+		$sqlget= mysqli_query($dbhandle,"DELETE from vehicle where id_vehicle='$vid'");
 		
 		if($sqlget){
 
-			echo "Information has been deleted successfully !";
+			echo "Vehicle has been deleted successfully !";
 		}else{
 			echo "Sorry, there is an error. Please try again later !";
 }
@@ -61,7 +61,7 @@ $(function(){
         confirm('You really want to delete it ?');
         },
           onCloseModal: function(){
-            window.location.href='students.php';
+            window.location.href='vehicle.php';
 
          }
         

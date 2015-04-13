@@ -46,10 +46,10 @@ include'includes/dashboard_menu.php'
     <a href="create-student.php"><img src="css/img/posting.png"><br><b>Create Student</b></a>
     </div>
     <div class="shortcutHome">
-    <a href=""><img src="css/img/photo.png"><br><b>New Employee</b></a>
+    <a href="employee.php"><img src="css/img/photo.png"><br><b>Employee</b></a>
     </div>
     <div class="shortcutHome">
-    <a href=""><img src="css/img/halaman.png"><br><b>New Vehicle</b></a>
+    <a href="create-vehicle.php"><img src="css/img/halaman.png"><br><b>Vehicle</b></a>
     </div>
   
     
@@ -72,7 +72,14 @@ require_once('includes/connect.php');
   $sql_get_num_r_p=mysqli_fetch_assoc($sql_get_num_p);   
 echo $sql_get_num_r_p['cp'];
       ?></b></td></tr>
-      <tr><td style="border: none;padding: 4px;">Number of Vehicles</td><td style="border: none;padding: 4px;"><b>12</b></td></tr>
+      <tr><td style="border: none;padding: 4px;">Number of Vehicles</td><td style="border: none;padding: 4px;"><b>
+	    <?php
+require_once('includes/connect.php');
+  $sql_get_num_s = mysqli_query($dbhandle,"select COUNT(*) AS cv from vehicle");
+  $sql_get_num_r_s=mysqli_fetch_assoc($sql_get_num_s);   
+echo $sql_get_num_r_s['cv'];
+      ?>
+	  </b></td></tr>
     </table>
     </div>
   </div>

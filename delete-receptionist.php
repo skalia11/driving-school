@@ -61,7 +61,7 @@ $(function(){
         confirm('You really want to delete it ?');
         },
           onCloseModal: function(){
-            window.location.href='students.php';
+            window.location.href='employee.php';
 
          }
         

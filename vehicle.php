@@ -12,11 +12,15 @@
 		{
 			header('Location:index.php');
 		}
-		include '/includes/dashboard_header.php' 
+		include 'includes/dashboard_header.php' 
 	?>
-</head>
+<link rel="stylesheet" href="css/jquery-nicemodal.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/jquery-nicemodal.js"></script>
 
-<body> 
+
+  </head>
+  <body>
 	<div id="header">
 		<div class="inHeader">
 			<div class="mosAdmin">
@@ -31,7 +35,7 @@
 		<div id="leftBar">
 			<ul>
 				<?php
-					include'/includes/dashboard_menu.php'
+					include'includes/dashboard_menu.php'
 				?>
 			</ul>
 		</div>
@@ -79,20 +83,39 @@
 						<td class="data"><center><?php echo $sqlf['history']; ?></center></td>
 						<td class="data" width="75px">
 							<center>
-							<a href="#"><img src="css/img/detail.png"></a>&nbsp;&nbsp;&nbsp;
-							<a href="#"><img src="css/img/edit.png"></a>
-							<a href="#"><img src="css/img/delete.png"></a>
+							<?php $vid= $sqlf['id_vehicle']; ?>
+        <button> <a href="edit-vehicle.php?vid=<?php echo $vid;?>"><img src="css/img/edit.png"></a></button>
+              <button name="delete" id="demo" formmethod="post" data-url="delete-vehicle.php?vid=<?php echo $vid;?>">  <img src="css/img/delete.png"></button>
 							</center>
 							</td>
       </tr><?php }
 
     ?>
     </table>
-    
+    <script>
+$(function(){
+
+    $('button#demo').nicemodal({
+        width: '500px',
+        keyCodeToClose: 27,
+        defaultCloseButton: true,
+        idToClose: '#close-nicemodal',
+        closeOnClickOverlay: true,
+        closeOnDblClickOverlay: false,
+          //onCloseModal: function(){
+       // alert('Reload Page to see the effect !');
+         //   window.location.href='student.php';
+
+         //}
+        
+
+    });
+});
+</script>
 </div>
 <?php 
 
-include '/includes/dashboard_footer.php'
+include 'includes/dashboard_footer.php'
 
 ?>
 

@@ -15,7 +15,7 @@
 	{
 		header('Location:index.php');
 	}
-	include '/includes/dashboard_header.php' 
+	include 'includes/dashboard_header.php' 
 	?>
 </head>
  
@@ -37,7 +37,7 @@
 		<!-- dashboard for user options traversal -->
 		<div id="leftBar">
 			<ul>
-				<?php include'/includes/dashboard_menu.php'; ?>
+				<?php include'includes/dashboard_menu.php'; ?>
 			</ul>
 		</div>
 
@@ -173,7 +173,7 @@
 
 	<!-- this include allows the dashboard footer to be displayed -->
 	<?php 
-		include '/includes/dashboard_footer.php'
+		include 'includes/dashboard_footer.php'
 	?>
 </body>
 

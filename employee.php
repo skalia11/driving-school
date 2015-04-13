@@ -10,8 +10,14 @@ session_start();
 if(!isset($_SESSION['user'])){
 header('Location:index.php');
 }
-include '/includes/dashboard_header.php' 
+include 'includes/dashboard_header.php';
+include 'includes/dashboard_header.php';
 ?>
+<link rel="stylesheet" href="css/jquery-nicemodal.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/jquery-nicemodal.js"></script>
+
+
   </head>
   <body>
  
@@ -32,7 +38,7 @@ include '/includes/dashboard_header.php'
   <div id="leftBar">
   <ul>
  <?php
-include'/includes/dashboard_menu.php'
+include'includes/dashboard_menu.php'
  ?>
   </ul>
   </div>
@@ -69,11 +75,11 @@ while($sqlf=mysqli_fetch_assoc($sqls)){   ?>
         <td class="data"><center><?php echo $sqlf['username']; ?></center></td>
         <td class="data"><center><?php echo $sqlf['password']; ?></center></td>
         <td class="data" width="75px">
-        <center>
-        <a href="#"><img src="css/img/detail.png"></a>&nbsp;&nbsp;&nbsp;
-        <a href="#"><img src="css/img/edit.png"></a>
-        <a href="#"><img src="css/img/delete.png"></a>
-        </center>
+           <center>
+         <?php  $sqlres=$sqlf['sincard']; ?>
+        <button> <a href="edit-receptionist.php?sincard=<?php echo $sqlres;?>"><img src="css/img/edit.png"></a></button>
+              <button name="delete" id="demo" formmethod="post" data-url="delete-receptionist.php?sincard=<?php echo $sqlres;?>">  <img src="css/img/delete.png"></button>
+       </center>
         </td>
       </tr><?php } ?>
   </table>
@@ -106,20 +112,45 @@ while($sqlf=mysqli_fetch_assoc($sqls)){   ?>
         <td class="data"><center><?php echo $sqlf['dl_number']; ?></center></td>
         <td class="data" width="75px">
         <center>
-        <a href="#"><img src="css/img/detail.png"></a>&nbsp;&nbsp;&nbsp;
-        <a href="#"><img src="css/img/edit.png"></a>
-        <a href="#"><img src="css/img/delete.png"></a>
-        </center>
+         <?php  $sqlres=$sqlf['sincard']; ?>
+          <button name="views" formmethod="post" data-url="view-instructor.php?sincard=<?php echo $sqlres;?>" id="demo"><img src="css/img/detail.png"></button>
+
+        <button> <a href="edit-instructor.php?sincard=<?php echo $sqlres;?>"><img src="css/img/edit.png"></a></button>
+              <button name="delete" id="demo" formmethod="post" data-url="delete-instructor.php?sincard=<?php echo $sqlres;?>">  <img src="css/img/delete.png"></button>
+       </center>
         </td>
+    
       </tr><?php } ?>
   </table>
 	
 	
     
 </div>
+
+<script>
+$(function(){
+
+    $('button#demo').nicemodal({
+        width: '500px',
+        keyCodeToClose: 27,
+        defaultCloseButton: true,
+        idToClose: '#close-nicemodal',
+        closeOnClickOverlay: true,
+        closeOnDblClickOverlay: false,
+          //onCloseModal: function(){
+       // alert('Reload Page to see the effect !');
+         //   window.location.href='student.php';
+
+         //}
+        
+
+    });
+});
+</script>
+
 <?php 
 
-include '/includes/dashboard_footer.php'
+include 'includes/dashboard_footer.php'
 
 ?>
 
